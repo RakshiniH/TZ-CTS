@@ -1,0 +1,119 @@
+<div class="breadcrumb">View/Edit Member</div>
+
+<div class="content-box page-wrapper">
+  <!-- SEARCH SECTION -->
+  <div class="search-section">
+    <div class="search-title">Search By:</div>
+    
+    <div class="search-grid-unified">
+      <!-- ROW 1 -->
+      <div class="sg-row">
+        <div class="form-group flex-2">
+          <label>MBI</label>
+          <input type="text" placeholder="Enter MBI">
+        </div>
+        <div class="form-group flex-2">
+          <label>Member ID</label>
+          <input type="text" placeholder="Enter Member ID">
+        </div>
+        <div class="flex-spacer"></div>
+        <div class="form-group flex-2">
+          <label>First Name</label>
+          <input type="text">
+        </div>
+        <div class="form-group flex-1">
+          <label>MI</label>
+          <input type="text">
+        </div>
+        <div class="form-group flex-2">
+          <label>Last Name</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="sg-row">
+        <div class="form-group flex-2">
+          <label>Plan ID</label>
+          <select><option>All</option></select>
+        </div>
+        <div class="form-group flex-2">
+          <label>PBP ID</label>
+          <select><option>All</option></select>
+        </div>
+        <div class="flex-spacer"></div>
+        <div class="form-group flex-2" style="position: relative;">
+          <span class="or-label">OR</span>
+          <label>Member Status</label>
+          <select><option>All</option></select>
+        </div>
+        <div class="form-group flex-3">
+          <label>Program Source</label>
+          <select><option>All</option></select>
+        </div>
+      </div>
+
+      <!-- ROW 3 -->
+      <div class="sg-row">
+        <div class="form-group flex-4">
+          <label>Employer Group Name</label>
+          <select><option>All</option></select>
+        </div>
+        <div class="flex-spacer"></div>
+        <div class="flex-5"></div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="search-actions">
+      <a class="btn-reset">Reset</a>
+      <button class="btn-search">Search</button>
+      <label class="auto-search">
+        <input type="checkbox"> Auto Search
+        <svg class="info-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      </label>
+    </div>
+  </div>
+
+  <!-- TABLE SECTION -->
+  <div class="table-container">
+    <table class="trizetto-table">
+      <thead>
+        <tr>
+          <th>MBI</th>
+          <th>First Name</th>
+          <th>M.I.</th>
+          <th>Last Name</th>
+          <th>Plan ID</th>
+          <th>PBP ID</th>
+          <th>Member ID</th>
+          <th>Effective Date</th>
+          <th>Termination Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of records">
+          <td>{{row.mbi}}</td>
+          <td>{{row.firstName}}</td>
+          <td>{{row.mi}}</td>
+          <td>{{row.lastName}}</td>
+          <td>{{row.planId}}</td>
+          <td>{{row.pbpId}}</td>
+          <td>{{row.memberId}}</td>
+          <td>{{row.effectDate}}</td>
+          <td>{{row.termDate}}</td>
+          <td [class.status-pending]="row.status === 'Pending'">{{row.status}}</td>
+          <td class="action-cell">
+            <button class="action-btn" title="Edit Member" routerLink="/edit-member">
+              <svg class="action-icon" viewBox="0 0 24 24">
+                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

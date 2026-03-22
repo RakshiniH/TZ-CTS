@@ -1,0 +1,93 @@
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="top-nav">
+  <div class="brand">
+    <span class="menu-icon">&#9776;</span>
+    <span class="logo-text">TriZetto Elements<sup>®</sup></span>
+    <span class="pipe">|</span>
+    <span class="subtitle">Enrollment Administration Manager</span>
+  </div>
+  <div class="user-area">
+    <span class="username">tmsadmin</span>
+    <!-- bell -->
+    <svg class="hdr-icon" viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 002 2zm6-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 00-3 0v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+    <!-- person -->
+    <svg class="hdr-icon" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+    <!-- logout -->
+    <svg class="hdr-icon" viewBox="0 0 24 24"><path d="M17 7l-1.4 1.4L18.2 11H8v2h10.2l-2.6 2.6L17 17l5-5-5-5zM4 5h8V3H4a2 2 0 00-2 2v14a2 2 0 002 2h8v-2H4V5z"/></svg>
+    <!-- grid -->
+    <svg class="hdr-icon" viewBox="0 0 24 24"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
+  </div>
+</header>
+
+<!-- secondary links -->
+<div class="secondary-bar">
+  <div class="sec-left">
+    {{ pageTitle }}
+  </div>
+  <div class="sec-right">
+  <span class="sec-link">
+    <svg class="sec-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+    <u>Recent Members</u>
+  </span>
+  <span class="sec-link">
+    <svg class="sec-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+    <u>Kibana</u>
+  </span>
+  <span class="sec-link">
+    <svg class="sec-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    <u>Help</u>
+  </span>
+  </div>
+</div>
+
+<!-- ═══════════════ BODY ═══════════════ -->
+<div class="main-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a *ngFor="let item of sidebarItems"
+         class="sb-item"
+         style="cursor:pointer; display:flex;"
+         [class.active]="item.active"
+         [routerLink]="item.path"
+         (click)="setActive(item)">
+      <ng-container [ngSwitch]="item.icon">
+        <!-- 1: Dashboard (Grid) -->
+        <svg *ngSwitchCase="'dashboard'" viewBox="0 0 24 24"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg>
+        
+        <!-- 2: Hierarchy (Org chart) -->
+        <svg *ngSwitchCase="'hierarchy'" viewBox="0 0 24 24"><path d="M19 15v-3h-2v-2h-4V7h2V3h-6v4h2v3H7v2H5v3H2v6h6v-6H5v-1h4v1h6v-1h4v1h-3v6h6v-6h-3z"/></svg>
+
+        <!-- 3: Home -->
+        <svg *ngSwitchCase="'home'" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        
+        <!-- 4: List Checks -->
+        <svg *ngSwitchCase="'list-check'" viewBox="0 0 24 24"><path d="M10 5h11v2H10zm0 6h11v2H10zm0 6h11v2H10zM3.41 12.59L2 14l4 4 4-4-1.41-1.41L5 15.17l-1.59-1.58zM3.41 6.59L2 8l4 4 4-4-1.41-1.41L5 9.17 3.41 7.59z"/></svg>
+        
+        <!-- 5: Gears -->
+        <svg *ngSwitchCase="'gears'" viewBox="0 0 24 24"><path d="M12 8.5c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm7.43-2.05l-2.02-.6c-.23-.62-.53-1.22-.9-1.76l1.04-1.84c.14-.24.1-.55-.11-.74l-1.41-1.41c-.2-.2-.5-.25-.74-.11L13.4 1.05c-.53-.36-1.12-.66-1.74-.89l-.59-2.03c-.07-.3-.33-.52-.64-.52h-2c-.31 0-.58.21-.65.51l-.59 2.03c-.62.24-1.21.54-1.74.9L3.6 1.07c-.24-.13-.54-.08-.74.12L1.45 2.6c-.21.2-.26.5-.12.75l1.04 1.84c-.37.55-.68 1.15-.9 1.77l-2.03.6c-.29.08-.5.34-.5.64v2c0 .31.21.58.51.64l2.02.6c.23.62.53 1.22.9 1.76l-1.04 1.84c-.14.24-.1.55.11.74l1.41 1.41c.20.2.5.25.74.11l1.89-1.04c.54.37 1.13.68 1.75.91l.59 2.03c.07.3.33.52.64.52h2c.31 0 .58-.21.65-.51l.59-2.03c.62-.24 1.21-.55 1.74-.9l1.89 1.04c.24.13.54.08.74-.11l1.41-1.41c.21-.2.26-.5.11-.74l-1.04-1.84c.37-.54.67-1.14.9-1.76l2.02-.6c.29-.08.5-.34.5-.64v-2c0-.3-.21-.57-.5-.65zm-7.43 7.05c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+        
+        <!-- 6: Mail -->
+        <svg *ngSwitchCase="'mail'" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+
+        <!-- 7: User-gear -->
+        <svg *ngSwitchCase="'user-gear'" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4zm7.49 5l.79-.62c.07-.06.09-.16.04-.25l-.75-1.3c-.05-.09-.15-.12-.24-.09l-.93.38c-.2-.15-.41-.28-.63-.38l-.14-.98c-.01-.1-.1-.18-.21-.18h-1.5c-.11 0-.2.08-.21.18l-.14.98c-.22.1-.43.23-.63.38l-.93-.38c-.09-.03-.2 0-.24.09l-.75 1.3c-.05.09-.03.19.04.25l.79.62c-.01.12-.01.24-.01.37 0 .13 0 .25.01.37l-.79.62c-.07.06-.09.16-.04.25l.75 1.3c.05.09.15.12.24.09l.93-.38c.2.15.41.28.63.38l.14.98c.01.1.1.18.21.18h1.5c.11 0 .2-.08.21-.18l.14-.98c.22-.1.43-.23.63-.38l.93.38c.09.03.2 0 .24-.09l.75-1.3c.05-.09.03-.19-.04-.25l-.79-.62c.01-.12.01-.24.01-.37 0-.13 0-.25-.01-.37zM18.5 20c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"/></svg>
+
+        <!-- 8: Clipboard -->
+        <svg *ngSwitchCase="'clipboard'" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+
+        <!-- 9: Chart line -->
+        <svg *ngSwitchCase="'chart-line'" viewBox="0 0 24 24"><path d="M16 11.78L20.24 4.45L21.97 5.45L16.74 14.5L10.23 10.75L5.46 19H22V21H2V3H4V17.54L11.27 4.46L17.76 8.25L16 11.78Z"/></svg>
+
+        <svg *ngSwitchDefault viewBox="0 0 24 24"></svg>
+      </ng-container>
+      <!-- specific arrow condition -->
+      <span class="sb-arrow" *ngIf="item.hasArrow">&gt;</span>
+    </a>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
